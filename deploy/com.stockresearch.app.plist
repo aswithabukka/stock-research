@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.stockresearch.app</string>
+
+    <!-- bash -lc loads your login profile so PATH includes `claude` and python3,
+         and expands $HOME so this works regardless of your Mac mini username. -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-lc</string>
+        <string>exec "$HOME/.claude/skills/stock-research/deploy/run_server.sh"</string>
+    </array>
+
+    <!-- Start at login and restart automatically if it ever stops. -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/stock_research.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/stock_research.err.log</string>
+</dict>
+</plist>
